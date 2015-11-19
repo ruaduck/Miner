@@ -13,6 +13,7 @@ namespace Tidus_Miner
     public partial class Miner : Form
     {
         public static Item Housecontainer;
+        public static Item Pickcontainer;
         public Serial PickSerial;
         public static DateTime Endtime;
         public static int Minutes; //Minutes to Run
@@ -71,7 +72,17 @@ namespace Tidus_Miner
             {
                 RecallSetup();
                 RunebookSetup();
-                PickSerial = PickSetup();
+                DialogResult axedialogResult = MessageBox.Show(@"Do you have your Axe Equipped?", @"Getting Axe ID", MessageBoxButtons.YesNo);
+                switch (axedialogResult)
+                {
+                    case DialogResult.Yes:
+                        PickSerial = PickSetup();
+                        break;
+                    case DialogResult.No:
+                    MessageBox.Show(@"Equip your Axe and start script again.");
+                    Close();
+                    break;
+                }
                 Invoke((MethodInvoker)
                     delegate
                     {
@@ -97,9 +108,11 @@ namespace Tidus_Miner
         }
         private static void ContainerSetup()
         {
-            MessageBox.Show(@"Select your Container");
+            MessageBox.Show(@"Select your Ore Container");
             Housecontainer = new Item(new Serial(Getcontainer()));
             Housecontainer.DoubleClick();
+            MessageBox.Show(@"Select your Pick Container");
+            Pickcontainer = new Item(new Serial(Getcontainer()));
         }
         private void RunebookSetup()
         {
@@ -150,21 +163,11 @@ namespace Tidus_Miner
         private Serial PickSetup()
         {
             Serial axe = null;
-            var main = new MiningMethod();
             #region Get Axe Info
-            DialogResult axedialogResult = MessageBox.Show(@"Do you have your Axe Equipped?", @"Getting Axe ID", MessageBoxButtons.YesNo);
-            switch (axedialogResult)
-            {
-                case DialogResult.Yes:
+
                     axe = PlayerMobile.GetPlayer().Paperdoll.TwoHanded.Serial;
                     Invoke((MethodInvoker)
                         delegate { axetextbox.Text = axe.ToString(); });
-                    break;
-                case DialogResult.No:
-                    MessageBox.Show(@"Equip your Axe and start script again.");
-                    Close();
-                    break;
-            }
             return axe;
 
             #endregion
@@ -244,7 +247,19 @@ namespace Tidus_Miner
             MiningMethod.Unload(Housecontainer);
             Travel.Recall(Runebook, Runetouse, Method, Osi);
         }
-        private static bool GoHome()
+        public static void Gohomeandreload()
+        {
+
+            while (!GoHome())
+            {
+                Thread.Sleep(50);
+            }
+
+            MiningMethod.Reload(Pickcontainer);
+            Travel.Recall(Runebook, Runetouse, Method, Osi);
+        }
+
+        public static bool GoHome()
         {
             return Travel.Recall(Runebook, Homerune, Method, Osi);
         }

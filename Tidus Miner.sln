@@ -5,16 +5,57 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tidus Miner", "Tidus Miner\Tidus Miner.csproj", "{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptSDK", "..\..\..\..\Documents\ScriptSDK\ScriptSDK\ScriptSDK.csproj", "{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Broadsword|Any CPU = Broadsword|Any CPU
 		Debug|Any CPU = Debug|Any CPU
+		Official - DLL|Any CPU = Official - DLL|Any CPU
+		Official - Exe|Any CPU = Official - Exe|Any CPU
+		Official|Any CPU = Official|Any CPU
+		RebirthUO - DLL|Any CPU = RebirthUO - DLL|Any CPU
+		RebirthUO - Exe|Any CPU = RebirthUO - Exe|Any CPU
+		RebirthUO|Any CPU = RebirthUO|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}.Broadsword|Any CPU.ActiveCfg = Release|Any CPU
+		{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}.Broadsword|Any CPU.Build.0 = Release|Any CPU
 		{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}.Official - DLL|Any CPU.ActiveCfg = Release|Any CPU
+		{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}.Official - DLL|Any CPU.Build.0 = Release|Any CPU
+		{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}.Official - Exe|Any CPU.ActiveCfg = Release|Any CPU
+		{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}.Official - Exe|Any CPU.Build.0 = Release|Any CPU
+		{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}.Official|Any CPU.ActiveCfg = Release|Any CPU
+		{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}.Official|Any CPU.Build.0 = Release|Any CPU
+		{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}.RebirthUO - DLL|Any CPU.ActiveCfg = Release|Any CPU
+		{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}.RebirthUO - DLL|Any CPU.Build.0 = Release|Any CPU
+		{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}.RebirthUO - Exe|Any CPU.ActiveCfg = Release|Any CPU
+		{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}.RebirthUO - Exe|Any CPU.Build.0 = Release|Any CPU
+		{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}.RebirthUO|Any CPU.ActiveCfg = Release|Any CPU
+		{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}.RebirthUO|Any CPU.Build.0 = Release|Any CPU
 		{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FA447DE-F270-4A5E-96B2-D2FA0E06A2C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}.Broadsword|Any CPU.ActiveCfg = Broadsword|Any CPU
+		{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}.Broadsword|Any CPU.Build.0 = Broadsword|Any CPU
+		{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}.Official - DLL|Any CPU.ActiveCfg = Official - DLL|Any CPU
+		{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}.Official - DLL|Any CPU.Build.0 = Official - DLL|Any CPU
+		{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}.Official - Exe|Any CPU.ActiveCfg = Official - Exe|Any CPU
+		{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}.Official - Exe|Any CPU.Build.0 = Official - Exe|Any CPU
+		{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}.Official|Any CPU.ActiveCfg = Official|Any CPU
+		{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}.Official|Any CPU.Build.0 = Official|Any CPU
+		{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}.RebirthUO - DLL|Any CPU.ActiveCfg = RebirthUO - DLL|Any CPU
+		{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}.RebirthUO - DLL|Any CPU.Build.0 = RebirthUO - DLL|Any CPU
+		{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}.RebirthUO - Exe|Any CPU.ActiveCfg = RebirthUO - Exe|Any CPU
+		{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}.RebirthUO - Exe|Any CPU.Build.0 = RebirthUO - Exe|Any CPU
+		{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}.RebirthUO|Any CPU.ActiveCfg = RebirthUO|Any CPU
+		{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}.RebirthUO|Any CPU.Build.0 = RebirthUO|Any CPU
+		{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1809DE0B-5DAC-4F89-A5A3-601912B9EAB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

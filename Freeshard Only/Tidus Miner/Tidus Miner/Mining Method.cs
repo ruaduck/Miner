@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Linq;
-using System.Net.NetworkInformation;
 using ScriptSDK;
-using ScriptSDK.API;
 using ScriptSDK.Attributes;
 using ScriptSDK.Data;
 using ScriptSDK.Engines;
 using ScriptSDK.Items;
+using StealthAPI;
 
 namespace Tidus_Miner
 {

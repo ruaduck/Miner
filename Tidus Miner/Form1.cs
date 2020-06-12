@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Threading;
 using System.Windows.Forms;
 using ScriptSDK;
-using ScriptSDK.API;
+using StealthAPI;
 using ScriptSDK.Items;
 using ScriptSDK.Mobiles;
 using Tidus_Miner.Properties;
@@ -16,6 +16,7 @@ namespace Tidus_Miner
         public static Item Pickcontainer;
         public Serial PickSerial;
         public static DateTime Endtime;
+        public static DateTime Starttime;
         public static int Minutes; //Minutes to Run
         public static int Homerune; // Rune Home
         public static int Bankrune;  //  Bank Rune
@@ -23,11 +24,15 @@ namespace Tidus_Miner
         public static int Lastrune; // Last Lumberjacking Rune
         public static bool Osi; // OSI = True; RebirthUO = False;
         public static int Runetouse; //current rune on recall
-        public static uint Runebook;
+        public static Item Runebook;
         public static int Minearea; //  Area to look for tree
         public static int Maxweight;
         public static bool Speechhit;
         public static string Method = "Not Set";
+        public static bool Encumbered;
+        public static bool Actionperform;
+        public static bool Loadused;
+        public static bool Beetle;
 
         public Miner()
         {
@@ -113,24 +118,26 @@ namespace Tidus_Miner
             Housecontainer.DoubleClick();
             MessageBox.Show(@"Select your Pick Container");
             Pickcontainer = new Item(new Serial(Getcontainer()));
+            Pickcontainer.DoubleClick();
         }
         private void RunebookSetup()
         {
-            Travel travel = new Travel();
+            MessageBox.Show(@"Select your Runebook");
+            Runebook = new Item(new Serial(Getitem()));
             #region Get Runebook Info
-            DialogResult runebookDialogResult = MessageBox.Show(@"Do you have only 1 runebook in your backpack?", @"Getting Axe ID", MessageBoxButtons.YesNo);
-            if (runebookDialogResult == DialogResult.Yes)
-            {
-                Runebook = travel.SetRunebookId();
-                Invoke((MethodInvoker)
-                        delegate { Runebooktbox.Text = Runebook == 0 ? "Error" : Runebook.ToString(); });
-            }
-            else if (runebookDialogResult == DialogResult.No)
-            {
-                MessageBox.Show(@"Get your runebooks correct and start script again.");
-                Close();
-            }
+            Invoke((MethodInvoker)
+                        delegate { Runebooktbox.Text = Runebook.Serial.Value.ToString(); });
             #endregion
+        }
+        private static uint Getitem()
+        {
+            Stealth.Client.ClientRequestObjectTarget();
+            while (!Stealth.Client.ClientTargetResponsePresent())
+            {
+                Thread.Sleep(50);
+            }
+            var myitem = Stealth.Client.ClientTargetResponse().ID;
+            return myitem;
         }
         private static uint Getcontainer()
         {

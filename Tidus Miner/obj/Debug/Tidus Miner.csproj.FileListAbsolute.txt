@@ -1,1 +1,15 @@
 C:\Users\Cris\Desktop\Tidus Stealth Scripts\Freeshard Only\Tidus Miner\Tidus Miner\bin\Debug\Tidus Miner.exe.config
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\obj\Debug\Tidus Miner.csprojAssemblyReference.cache
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\obj\Debug\Tidus_Miner.Miner.resources
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\obj\Debug\Tidus_Miner.Properties.Resources.resources
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\obj\Debug\Tidus Miner.csproj.GenerateResource.cache
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\obj\Debug\Tidus Miner.csproj.CoreCompileInputs.cache
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\bin\Debug\Tidus Miner.exe.config
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\bin\Debug\Tidus Miner.exe
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\bin\Debug\Tidus Miner.pdb
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\bin\Debug\ScriptSDK.dll
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\bin\Debug\ScriptSDK.pdb
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\bin\Debug\ScriptSDK.xml
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\obj\Debug\Tidus Miner.csproj.CopyComplete
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\obj\Debug\Tidus Miner.exe
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\obj\Debug\Tidus Miner.pdb

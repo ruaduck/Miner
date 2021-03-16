@@ -1,104 +1,106 @@
-﻿using System;
-using System.Linq;
-using ScriptSDK;
-using ScriptSDK.Attributes;
-using ScriptSDK.Data;
-using ScriptSDK.Engines;
+﻿using ScriptSDK.Engines;
 using ScriptSDK.Items;
+using ScriptSDK.Mobiles;
+using ScriptSDK.Targets;
 using StealthAPI;
 
 namespace Tidus_Miner
 {
-    class MiningMethod
+    class MiningMethod : Miner
     {
-        public static ushort Ore;
-        public static ushort Picktype;
-        public static ushort[] Extras = { 0x0, 0x7DA, 0x4A7, 0x4A8, 0x4A9, 0x4AA };// Reg,Oak,Ash,Yew,Heartwood,Bloodwood
+        
 
-        public static void Mine(Serial pick, int distance)
+        public static Item ChoosePick()
         {
-
-            var mypick = new UOEntity(new Serial(pick.Value));
-            TileReader.Initialize(); //Initialize the TileReader
-            var spots = TileReader.GetMiningSpots(distance); //Search all Trees in Range of 1 Tile  
-            var targethelper = TargetHelper.GetTarget(); // Assign the TargetHelper refeence
-            foreach (var spot in spots.Keys.SelectMany(key => spots[key]))
-            {
-                Stealth.Client.newMoveXY(spot.X, spot.Y, true, 1, true); // Move to Tree
-                for (var i = 0; i < 25; i++) // Do 25 times or until weight full
-                {
-                    if (Miner.Endtime < DateTime.Now) Miner.backgroundWorker1.CancelAsync();
-                    if (Miner.backgroundWorker1.CancellationPending) break;
-                    if (Checkweight())
-                    {
-                        Miner.Gohomeandunload();
-                        Stealth.Client.newMoveXY(spot.X, spot.Y, true, 1, true);
-                    }
-                    if (!CheckPicks())
-                    {
-                        Miner.Gohomeandreload();
-                        Stealth.Client.newMoveXY(spot.X, spot.Y, true, 1, true);
-                    }
-                    if ((mypick.DoubleClick()) && (targethelper.WaitForTarget(2000)))
-                        // try to doubleclick and wait until tárget cursor appear
-                        targethelper.TargetTo(spot.Tile, new Point3D(spot.X, spot.Y, spot.Z)); //target the tree
-                    Stealth.Client.Wait(1100); //wait 1 second
-                    if (!Miner.Speechhit) continue;
-                    Miner.Speechhit = false;
-                    break;
-                }
-            }
+            return Scanner.Find<Item>(MiningEquipment, 0xFFFF, Stealth.Client.GetBackpackID(), true)[0];
         }
-
-        private static bool CheckPicks()
+        public static bool CheckPicks()
         {
-            var items = Scanner.Find<Item>(Picktype, 0xFFFF, Stealth.Client.GetBackpackID(), true);
+            var items = Scanner.Find<Item>(MiningEquipment, 0xFFFF, Stealth.Client.GetBackpackID(), true);
             return items.Count >= 1;
         }
 
-        private static
-            bool Checkweight()
+        public static bool Checkweight()
         {
+            var max = Stealth.Client.GetSelfMaxWeight();
             var weight = Stealth.Client.GetSelfWeight();
-            return weight >= Miner.Maxweight;
+            if (weight < (max)) return false;
+            OreToIngot();
+            Stealth.Client.Wait(1000);
+            weight = Stealth.Client.GetSelfWeight();
+            return weight >= (max);
         }
+
+        public static void OreToIngot()
+        {
+            var player = PlayerMobile.GetPlayer();
+            var ores = Scanner.Find<Item>(Ore, 0xFFFF, Stealth.Client.GetBackpackID(), false);
+            var forge = Scanner.Find<Item>(Forge, 0xFFFF, Stealth.Client.GetBackpackID(), false);
+            foreach (var ore in ores)
+            {
+                ore.DoubleClick();               
+                var target = new EntityTarget(1000);
+                target.Action(forge[0]);
+            }
+        }
+
         public static void Unload(Item mycontainer)
         {
             Stealth.Client.Wait(1000);
-            //Setvariables();
             Stealth.Client.newMoveXY((ushort)mycontainer.Location.X, (ushort)mycontainer.Location.Y, true, 1, true);
             mycontainer.DoubleClick();
             Stealth.Client.Wait(1000);
-            var items = Scanner.Find<Item>(Ore, 0xFFFF, Stealth.Client.GetBackpackID(), true);
+            var items = Scanner.Find<Item>(Ingot, 0xFFFF, Stealth.Client.GetBackpackID(), true);
             foreach (var item in items)
             {
                 Stealth.Client.MoveItem(item.Serial.Value, item.Amount, mycontainer.Serial.Value, 0, 0, 0);
                 Stealth.Client.Wait(1000);
             }
-            foreach (var move in Extras.Select(extra => Scanner.Find<Item>(extra, 0xFFFF, Stealth.Client.GetBackpackID(), true)).SelectMany(moves => moves))
-            {
-                Stealth.Client.MoveItem(move.Serial.Value, move.Amount, mycontainer.Serial.Value, 0, 0, 0);
-                Stealth.Client.Wait(1000);
-            }
+            
         }
 
         public static void Reload(Item mycontainer)
         {
             Stealth.Client.Wait(1000);
-            //Setvariables();
             Stealth.Client.newMoveXY((ushort)mycontainer.Location.X, (ushort)mycontainer.Location.Y, true, 1, true);
             mycontainer.DoubleClick();
             Stealth.Client.Wait(1000);
-            var items = Scanner.Find<Item>(Picktype, 0xFFFF, mycontainer.Serial.Value, true);
-            for (var index = 0; index < items.Count; index++)
+            var items = Scanner.Find<Item>(MiningEquipment, 0xFFFF, mycontainer.Serial.Value, true);
+            for (var i = 0; i < items.Count; i++)
             {
-                var item = items[index];
-                Stealth.Client.MoveItem(item.Serial.Value, item.Amount, Stealth.Client.GetBackpackID(), 0, 0, 0);
+                Stealth.Client.MoveItem(items[i].Serial.Value, items[i].Amount, Stealth.Client.GetBackpackID(), 0, 0, 0);
                 Stealth.Client.Wait(1000);
-                if (index == 2)
+                if (i == 0)
                 break;
             }
         }
+        public static void BankUnload(Item mycontainer)
+        {
+            Stealth.Client.SendTextToUO("Bank");
+            Stealth.Client.Wait(1000);
+            var items = Scanner.Find<Item>(Ingot, 0xFFFF, Stealth.Client.GetBackpackID(), true);
+            foreach (var item in items)
+            {
+                Stealth.Client.MoveItem(item.Serial.Value, item.Amount, mycontainer.Serial.Value, 0, 0, 0);
+                Stealth.Client.Wait(1000);
+            }
+        }
+        public static void BankReload(Item mycontainer)
+        {
+            Stealth.Client.SendTextToUO("Bank");
+            Stealth.Client.Wait(1000);
+            mycontainer.DoubleClick();
+            Stealth.Client.Wait(1000);
+            var items = Scanner.Find<Item>(MiningEquipment, 0xFFFF, mycontainer.Serial.Value, true);
+            for (var i = 0; i < items.Count; i++)
+            {
+                Stealth.Client.MoveItem(items[i].Serial.Value, items[i].Amount, Stealth.Client.GetBackpackID(), 0, 0, 0);
+                Stealth.Client.Wait(1000);
+                if (i == 2)
+                    break;
+            }
+        }
+        
 
     }
 }

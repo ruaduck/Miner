@@ -1,0 +1,13 @@
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\bin\Release\Tidus Miner.exe.config
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\bin\Release\Tidus Miner.exe
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\bin\Release\Tidus Miner.pdb
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\bin\Release\ScriptSDK.dll
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\bin\Release\ScriptSDK.pdb
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\obj\Release\Tidus Miner.csprojAssemblyReference.cache
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\obj\Release\Tidus_Miner.Miner.resources
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\obj\Release\Tidus_Miner.Properties.Resources.resources
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\obj\Release\Tidus Miner.csproj.GenerateResource.cache
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\obj\Release\Tidus Miner.csproj.CoreCompileInputs.cache
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\obj\Release\Tidus Miner.csproj.CopyComplete
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\obj\Release\Tidus Miner.exe
+C:\Users\tidus\Documents\GitHub\Miner\Tidus Miner\obj\Release\Tidus Miner.pdb

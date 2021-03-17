@@ -1,11 +1,8 @@
-﻿using System;
-using System.ComponentModel;
-using System.Threading;
+﻿using System.Threading;
 using System.Windows.Forms;
 using ScriptSDK;
 using StealthAPI;
 using ScriptSDK.Items;
-using ScriptSDK.Mobiles;
 using Tidus_Miner.Properties;
 using System.Collections.Generic;
 
@@ -129,7 +126,7 @@ namespace Tidus_Miner
             {
                 (ushort)Enums.MiningEquipment.Pickaxe,
                 (ushort)Enums.MiningEquipment.Shovel
-            };
+            };           
             Ore = new List<ushort>
             {
                 (ushort)Enums.Ore.Large,
@@ -137,23 +134,13 @@ namespace Tidus_Miner
                 (ushort)Enums.Ore.Small,
                 (ushort)Enums.Ore.Tiny
             };
-            Colors = new List<ushort>
+            IronOre = new List<ushort>
             {
-                (ushort)Enums.MiningColors.Reg,
-                (ushort)Enums.MiningColors.Agapite,
-                (ushort)Enums.MiningColors.Bronze,
-                (ushort)Enums.MiningColors.Copper,
-                (ushort)Enums.MiningColors.DullCopper,
-                (ushort)Enums.MiningColors.Golden,
-                (ushort)Enums.MiningColors.ShadowIron,
-                (ushort)Enums.MiningColors.Valorite,
-                (ushort)Enums.MiningColors.Verite,
-                (ushort)Enums.MiningColors.Blaze,
-                (ushort)Enums.MiningColors.Electrum,
-                (ushort)Enums.MiningColors.Ice,
-                (ushort)Enums.MiningColors.Magi,
-                (ushort)Enums.MiningColors.Platinum,
-                (ushort)Enums.MiningColors.Toxic
+                (ushort)Enums.Ore.Large,
+                (ushort)Enums.Ore.Medium,
+                (ushort)Enums.Ore.Small,
+                (ushort)Enums.Ore.Tiny,
+                (ushort)Enums.Ingots.Ingot
             };
             Forge = new List<ushort>
             {
@@ -175,17 +162,13 @@ namespace Tidus_Miner
                 (ushort)Enums.Ore.Small,
                 (ushort)Enums.Ore.Tiny
             };            
-            Colors = new List<ushort>
+            IronOre= new List<ushort>
             {
-                (ushort)Enums.MiningColors.Reg,
-                (ushort)Enums.MiningColors.Agapite,
-                (ushort)Enums.MiningColors.Bronze,
-                (ushort)Enums.MiningColors.Copper,
-                (ushort)Enums.MiningColors.DullCopper,
-                (ushort)Enums.MiningColors.Golden,
-                (ushort)Enums.MiningColors.ShadowIron,
-                (ushort)Enums.MiningColors.Valorite,
-                (ushort)Enums.MiningColors.Verite
+                (ushort)Enums.Ore.Large,
+                (ushort)Enums.Ore.Medium,
+                (ushort)Enums.Ore.Small,
+                (ushort)Enums.Ore.Tiny,
+                (ushort)Enums.Ingots.Ingot
             };      
             Forge = new List<ushort>
             {

@@ -23,8 +23,9 @@ namespace Tidus_Miner
         public static string BannedCSV = $@"{Application.StartupPath}\BannedTiles.csv";
         public static List<ushort> MiningEquipment { get; set; }
         public static List<ushort> Ore { get; set; }
-        public static List<ushort> Colors { get; set; }
+        public static List<ushort> IronOre { get; set; }
         public static List<ushort> Forge { get; set; }
+
         public static ushort Ingot = (ushort)Enums.Ingots.Ingot;
         public static Item Housecontainer { get; set; }
         public static Item Pickcontainer { get; set; }
@@ -33,15 +34,15 @@ namespace Tidus_Miner
         public static DateTime Starttime { get; set; }
         public int Minutes //Minutes to Run
         {
-            get => Convert.ToInt32(endtimebox.Text); 
+            get => Convert.ToInt32(endtimebox.Text);
             set => endtimebox.Text = Convert.ToString(value);
         }
         public static int Homerune { get; set; }  // Rune Home
- 
+
         public static int Bankrune  // Bank Rune
         {
             get; set;
-        } 
+        }
         public static int Firstrune; // First Mining Spot
         public static int Lastrune; // Last Mining Spot
         public static bool Osi { get; set; } // OSI = True; RebirthUO = False;
@@ -50,6 +51,7 @@ namespace Tidus_Miner
         public static int Minearea;//  Area to look for tree
         public static int Maxweight { get; set; }
         public static bool Speechhit { get; set; }
+        public static bool WorldSave { get; set; }
         public static bool SkipOre { get; set; }
         public static string Method = "Not Set";
         public static bool Encumbered { get; set; }
@@ -60,6 +62,7 @@ namespace Tidus_Miner
         public static Item Bankstorage { get; set; }
         public static BackgroundWorker backgroundWorker2 = new BackgroundWorker();
         public static BackgroundWorker backgroundWorker1 = new BackgroundWorker();
+        public static BackgroundWorker backgroundWorker3 = new BackgroundWorker();
 
         public Miner()
         {
@@ -81,8 +84,8 @@ namespace Tidus_Miner
                     while (!sr.EndOfStream)
                     {
                         StaticItemRealXY tile;
-                        
-                        string[] rows = sr.ReadLine().Split(',');                                                
+
+                        string[] rows = sr.ReadLine().Split(',');
                         tile.Color = (ushort)Convert.ToInt32(rows[0]);
                         tile.Tile = (ushort)Convert.ToInt32(rows[1]);
                         tile.X = (ushort)Convert.ToInt32(rows[2]);
@@ -103,13 +106,14 @@ namespace Tidus_Miner
             backgroundWorker2.WorkerSupportsCancellation = true;
             backgroundWorker2.DoWork +=
                  new DoWorkEventHandler(BackgroundWorker2_DoWork);
+            backgroundWorker3.DoWork += new DoWorkEventHandler(backgroundWorker3_DoWork);
         }
         private void Mine_btn_Click(object sender, EventArgs e)
         {
             if (SetInputs())
             {
                 Endtime = DateTime.Now.AddMinutes((Minutes));
-                if (Osi) 
+                if (Osi)
                 {
                     Setups.SetOSIInfo();
                 }
@@ -123,8 +127,8 @@ namespace Tidus_Miner
             }
             else MessageBox.Show(@"You missed some required fields or didn't enter in digits in those fields");
         }
-        
-        
+
+
         private void Start()
         {
             if (!backgroundWorker1.IsBusy) backgroundWorker1.RunWorkerAsync();
@@ -140,7 +144,7 @@ namespace Tidus_Miner
             startsetup.Enabled = false;
             Setup();
         }
-      
+
         private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             if (!MiningMethod.CheckPicks())
@@ -162,7 +166,7 @@ namespace Tidus_Miner
                 Setups.BankCrystalSetup();
                 Setups.RecallSetup();
                 Setups.RunebookSetup();
-                
+
                 if (!BankCrystal)
                 {
                     _ = Invoke((MethodInvoker)
@@ -187,7 +191,7 @@ namespace Tidus_Miner
                 MessageBox.Show(@"You missed some required fields or didn't enter in digits in those fields");
             }
         }
-                
+
         private void Miningloop()
         {
             while (Endtime > DateTime.Now)
@@ -195,21 +199,23 @@ namespace Tidus_Miner
 
                 for (Runetouse = Firstrune; Runetouse < Lastrune + 1; Runetouse++)
                 {
+                    if (WorldSave) { Thread.Sleep(50000); WorldSave = false; }
                     var loc1 = PlayerMobile.GetPlayer().Location;// LOC before recall
                     _ = Invoke((MethodInvoker)
                     delegate
                     {
                         Gosomewehere(Runetouse);
-                    }); 
-                    if (loc1 == PlayerMobile.GetPlayer().Location) continue;                    
+                    });
+                    if (loc1 == PlayerMobile.GetPlayer().Location) continue;
                     Mine(Minearea);
                     if (Endtime < DateTime.Now) backgroundWorker1.CancelAsync();
                     if (backgroundWorker1.CancellationPending) break;
                 }
                 if (backgroundWorker1.CancellationPending) break;
             }
+            MiningMethod.OreToIngot();
             if (!BankCrystal)
-            { 
+            {
                 GoHome();
                 MiningMethod.Unload(Housecontainer);
             }
@@ -233,7 +239,7 @@ namespace Tidus_Miner
                 File.AppendAllText(newFileName, mytext);
             }
 
-            
+
         }
         private static void OnClilocSpeech(object sender, ClilocSpeechEventArgs e)
         {
@@ -256,6 +262,9 @@ namespace Tidus_Miner
                 case "You can't mine there.":
                     Speechhit = true;
                     bannedtile.Add(mytile);
+                    break;
+                case "The world is saving, please wait.":
+                    WorldSave = true;
                     break;
                 default:
                     break;
@@ -295,6 +304,7 @@ namespace Tidus_Miner
 
                         if (Endtime < DateTime.Now) backgroundWorker1.CancelAsync();
                         if (backgroundWorker1.CancellationPending) break;
+                        if (WorldSave) { Thread.Sleep(50000); WorldSave = false; } // IF world save, wait 50 seconds for it to finish saving.
                         if (MiningMethod.Checkweight())
                         {
                             if (BankCrystal) { MiningMethod.BankUnload(Bankstorage); }
@@ -382,7 +392,53 @@ namespace Tidus_Miner
             Gosomewehere(Homerune);
             return loc1 != PlayerMobile.GetPlayer().Location; // Compare Locs to see if you moved.
         }
+        private void backgroundWorker3_DoWork(object sender, DoWorkEventArgs e)
+        {
 
+            if (InvokeRequired)
+            {
+                Invoke((MethodInvoker)delegate
+                {
+
+                    dullbox.Text = MiningMethod.DullCopper.ToString();
+                    copperbox.Text = MiningMethod.Copper.ToString();
+                    shadowbox.Text = MiningMethod.ShadowIron.ToString();
+                    bronzebox.Text = MiningMethod.Bronze.ToString();
+                    goldenbox.Text = MiningMethod.Golden.ToString();
+                    regbox.Text = MiningMethod.Reg.ToString();
+                    agapitebox.Text = MiningMethod.Agapite.ToString();
+                    veritebox.Text = MiningMethod.Verite.ToString();
+                    valoritebox.Text = MiningMethod.Valorite.ToString();
+                    blazebox.Text = MiningMethod.Blaze.ToString();
+                    icebox.Text = MiningMethod.Ice.ToString();
+                    toxicbox.Text = MiningMethod.Toxic.ToString();
+                    electrumbox.Text = MiningMethod.Electrum.ToString();
+                    platinumbox.Text = MiningMethod.Platinum.ToString();
+                    //avghr.Text = Avgperhour().ToString();                                       
+                });
+
+            }
+            else
+            {
+                dullbox.Text = MiningMethod.DullCopper.ToString();
+                copperbox.Text = MiningMethod.Copper.ToString();
+                shadowbox.Text = MiningMethod.ShadowIron.ToString();
+                bronzebox.Text = MiningMethod.Bronze.ToString();
+                goldenbox.Text = MiningMethod.Golden.ToString();
+                regbox.Text = MiningMethod.Reg.ToString();
+                agapitebox.Text = MiningMethod.Agapite.ToString();
+                veritebox.Text = MiningMethod.Verite.ToString();
+                valoritebox.Text = MiningMethod.Valorite.ToString();
+                blazebox.Text = MiningMethod.Blaze.ToString();
+                icebox.Text = MiningMethod.Ice.ToString();
+                toxicbox.Text = MiningMethod.Toxic.ToString();
+                electrumbox.Text = MiningMethod.Electrum.ToString();
+                platinumbox.Text = MiningMethod.Platinum.ToString();
+                //avghr.Text = Avgperhour().ToString();              
+            }
+
+        }
     }
-
 }
+
+

@@ -35,8 +35,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.hwbox = new System.Windows.Forms.TextBox();
-            this.bloodbox = new System.Windows.Forms.TextBox();
+            this.goldenbox = new System.Windows.Forms.TextBox();
+            this.bronzebox = new System.Windows.Forms.TextBox();
             this.shadowbox = new System.Windows.Forms.TextBox();
             this.copperbox = new System.Windows.Forms.TextBox();
             this.dullbox = new System.Windows.Forms.TextBox();
@@ -64,12 +64,16 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.toxicbox = new System.Windows.Forms.TextBox();
+            this.icebox = new System.Windows.Forms.TextBox();
+            this.blazebox = new System.Windows.Forms.TextBox();
+            this.valoritebox = new System.Windows.Forms.TextBox();
+            this.veritebox = new System.Windows.Forms.TextBox();
+            this.platinumbox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.electrumbox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.agapitebox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label17
@@ -88,9 +92,9 @@
             this.label16.Location = new System.Drawing.Point(197, 231);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(59, 13);
+            this.label16.Size = new System.Drawing.Size(41, 13);
             this.label16.TabIndex = 74;
-            this.label16.Text = "Heartwood";
+            this.label16.Text = "Golden";
             // 
             // label15
             // 
@@ -98,9 +102,9 @@
             this.label15.Location = new System.Drawing.Point(197, 207);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(60, 13);
+            this.label15.Size = new System.Drawing.Size(40, 13);
             this.label15.TabIndex = 73;
-            this.label15.Text = "Bloodwood";
+            this.label15.Text = "Bronze";
             // 
             // label14
             // 
@@ -108,9 +112,9 @@
             this.label14.Location = new System.Drawing.Point(197, 184);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(28, 13);
+            this.label14.Size = new System.Drawing.Size(67, 13);
             this.label14.TabIndex = 72;
-            this.label14.Text = "Yew";
+            this.label14.Text = "Shadow Iron";
             // 
             // label13
             // 
@@ -118,9 +122,9 @@
             this.label13.Location = new System.Drawing.Point(197, 162);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(25, 13);
+            this.label13.Size = new System.Drawing.Size(41, 13);
             this.label13.TabIndex = 71;
-            this.label13.Text = "Ash";
+            this.label13.Text = "Copper";
             // 
             // label12
             // 
@@ -128,9 +132,9 @@
             this.label12.Location = new System.Drawing.Point(197, 137);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(27, 13);
+            this.label12.Size = new System.Drawing.Size(62, 13);
             this.label12.TabIndex = 70;
-            this.label12.Text = "Oak";
+            this.label12.Text = "Dull Copper";
             // 
             // label11
             // 
@@ -142,23 +146,23 @@
             this.label11.TabIndex = 69;
             this.label11.Text = "Regular";
             // 
-            // hwbox
+            // goldenbox
             // 
-            this.hwbox.Location = new System.Drawing.Point(145, 230);
-            this.hwbox.Margin = new System.Windows.Forms.Padding(2);
-            this.hwbox.Name = "hwbox";
-            this.hwbox.ReadOnly = true;
-            this.hwbox.Size = new System.Drawing.Size(49, 20);
-            this.hwbox.TabIndex = 68;
+            this.goldenbox.Location = new System.Drawing.Point(145, 230);
+            this.goldenbox.Margin = new System.Windows.Forms.Padding(2);
+            this.goldenbox.Name = "goldenbox";
+            this.goldenbox.ReadOnly = true;
+            this.goldenbox.Size = new System.Drawing.Size(49, 20);
+            this.goldenbox.TabIndex = 68;
             // 
-            // bloodbox
+            // bronzebox
             // 
-            this.bloodbox.Location = new System.Drawing.Point(145, 204);
-            this.bloodbox.Margin = new System.Windows.Forms.Padding(2);
-            this.bloodbox.Name = "bloodbox";
-            this.bloodbox.ReadOnly = true;
-            this.bloodbox.Size = new System.Drawing.Size(49, 20);
-            this.bloodbox.TabIndex = 67;
+            this.bronzebox.Location = new System.Drawing.Point(145, 204);
+            this.bronzebox.Margin = new System.Windows.Forms.Padding(2);
+            this.bronzebox.Name = "bronzebox";
+            this.bronzebox.ReadOnly = true;
+            this.bronzebox.Size = new System.Drawing.Size(49, 20);
+            this.bronzebox.TabIndex = 67;
             // 
             // shadowbox
             // 
@@ -359,134 +363,176 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(326, 233);
+            this.label18.Location = new System.Drawing.Point(321, 209);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(59, 13);
+            this.label18.Size = new System.Drawing.Size(33, 13);
             this.label18.TabIndex = 87;
-            this.label18.Text = "Heartwood";
+            this.label18.Text = "Toxic";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(326, 209);
+            this.label19.Location = new System.Drawing.Point(321, 187);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(60, 13);
+            this.label19.Size = new System.Drawing.Size(22, 13);
             this.label19.TabIndex = 86;
-            this.label19.Text = "Bloodwood";
+            this.label19.Text = "Ice";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(326, 186);
+            this.label20.Location = new System.Drawing.Point(321, 162);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(28, 13);
+            this.label20.Size = new System.Drawing.Size(33, 13);
             this.label20.TabIndex = 85;
-            this.label20.Text = "Yew";
+            this.label20.Text = "Blaze";
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(326, 164);
+            this.label21.Location = new System.Drawing.Point(321, 140);
             this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(25, 13);
+            this.label21.Size = new System.Drawing.Size(42, 13);
             this.label21.TabIndex = 84;
-            this.label21.Text = "Ash";
+            this.label21.Text = "Valorite";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(326, 139);
+            this.label22.Location = new System.Drawing.Point(321, 115);
             this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(27, 13);
+            this.label22.Size = new System.Drawing.Size(34, 13);
             this.label22.TabIndex = 83;
-            this.label22.Text = "Oak";
+            this.label22.Text = "Verite";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(326, 115);
+            this.label23.Location = new System.Drawing.Point(321, 257);
             this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(44, 13);
+            this.label23.Size = new System.Drawing.Size(47, 13);
             this.label23.TabIndex = 82;
-            this.label23.Text = "Regular";
+            this.label23.Text = "Platinum";
             // 
-            // textBox1
+            // toxicbox
             // 
-            this.textBox1.Location = new System.Drawing.Point(274, 232);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(49, 20);
-            this.textBox1.TabIndex = 81;
+            this.toxicbox.Location = new System.Drawing.Point(269, 208);
+            this.toxicbox.Margin = new System.Windows.Forms.Padding(2);
+            this.toxicbox.Name = "toxicbox";
+            this.toxicbox.ReadOnly = true;
+            this.toxicbox.Size = new System.Drawing.Size(49, 20);
+            this.toxicbox.TabIndex = 81;
             // 
-            // textBox2
+            // icebox
             // 
-            this.textBox2.Location = new System.Drawing.Point(274, 206);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(49, 20);
-            this.textBox2.TabIndex = 80;
+            this.icebox.Location = new System.Drawing.Point(269, 184);
+            this.icebox.Margin = new System.Windows.Forms.Padding(2);
+            this.icebox.Name = "icebox";
+            this.icebox.ReadOnly = true;
+            this.icebox.Size = new System.Drawing.Size(49, 20);
+            this.icebox.TabIndex = 80;
             // 
-            // textBox3
+            // blazebox
             // 
-            this.textBox3.Location = new System.Drawing.Point(274, 184);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(49, 20);
-            this.textBox3.TabIndex = 79;
+            this.blazebox.Location = new System.Drawing.Point(269, 160);
+            this.blazebox.Margin = new System.Windows.Forms.Padding(2);
+            this.blazebox.Name = "blazebox";
+            this.blazebox.ReadOnly = true;
+            this.blazebox.Size = new System.Drawing.Size(49, 20);
+            this.blazebox.TabIndex = 79;
             // 
-            // textBox4
+            // valoritebox
             // 
-            this.textBox4.Location = new System.Drawing.Point(274, 160);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(49, 20);
-            this.textBox4.TabIndex = 78;
+            this.valoritebox.Location = new System.Drawing.Point(269, 136);
+            this.valoritebox.Margin = new System.Windows.Forms.Padding(2);
+            this.valoritebox.Name = "valoritebox";
+            this.valoritebox.ReadOnly = true;
+            this.valoritebox.Size = new System.Drawing.Size(49, 20);
+            this.valoritebox.TabIndex = 78;
             // 
-            // textBox5
+            // veritebox
             // 
-            this.textBox5.Location = new System.Drawing.Point(274, 137);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(49, 20);
-            this.textBox5.TabIndex = 77;
+            this.veritebox.Location = new System.Drawing.Point(269, 113);
+            this.veritebox.Margin = new System.Windows.Forms.Padding(2);
+            this.veritebox.Name = "veritebox";
+            this.veritebox.ReadOnly = true;
+            this.veritebox.Size = new System.Drawing.Size(49, 20);
+            this.veritebox.TabIndex = 77;
             // 
-            // textBox6
+            // platinumbox
             // 
-            this.textBox6.Location = new System.Drawing.Point(274, 113);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(49, 20);
-            this.textBox6.TabIndex = 76;
+            this.platinumbox.Location = new System.Drawing.Point(269, 255);
+            this.platinumbox.Margin = new System.Windows.Forms.Padding(2);
+            this.platinumbox.Name = "platinumbox";
+            this.platinumbox.ReadOnly = true;
+            this.platinumbox.Size = new System.Drawing.Size(49, 20);
+            this.platinumbox.TabIndex = 76;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(321, 233);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.TabIndex = 91;
+            this.label1.Text = "Electrum";
+            // 
+            // electrumbox
+            // 
+            this.electrumbox.Location = new System.Drawing.Point(269, 232);
+            this.electrumbox.Margin = new System.Windows.Forms.Padding(2);
+            this.electrumbox.Name = "electrumbox";
+            this.electrumbox.ReadOnly = true;
+            this.electrumbox.Size = new System.Drawing.Size(49, 20);
+            this.electrumbox.TabIndex = 90;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(197, 255);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.TabIndex = 89;
+            this.label2.Text = "Agapite";
+            // 
+            // agapitebox
+            // 
+            this.agapitebox.Location = new System.Drawing.Point(145, 254);
+            this.agapitebox.Margin = new System.Windows.Forms.Padding(2);
+            this.agapitebox.Name = "agapitebox";
+            this.agapitebox.ReadOnly = true;
+            this.agapitebox.Size = new System.Drawing.Size(49, 20);
+            this.agapitebox.TabIndex = 88;
             // 
             // Miner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(387, 256);
+            this.ClientSize = new System.Drawing.Size(387, 279);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.electrumbox);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.agapitebox);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label23);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.toxicbox);
+            this.Controls.Add(this.icebox);
+            this.Controls.Add(this.blazebox);
+            this.Controls.Add(this.valoritebox);
+            this.Controls.Add(this.veritebox);
+            this.Controls.Add(this.platinumbox);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
@@ -494,8 +540,8 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.hwbox);
-            this.Controls.Add(this.bloodbox);
+            this.Controls.Add(this.goldenbox);
+            this.Controls.Add(this.bronzebox);
             this.Controls.Add(this.shadowbox);
             this.Controls.Add(this.copperbox);
             this.Controls.Add(this.dullbox);
@@ -534,8 +580,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        public System.Windows.Forms.TextBox hwbox;
-        public System.Windows.Forms.TextBox bloodbox;
+        public System.Windows.Forms.TextBox goldenbox;
+        public System.Windows.Forms.TextBox bronzebox;
         public System.Windows.Forms.TextBox shadowbox;
         public System.Windows.Forms.TextBox copperbox;
         public System.Windows.Forms.TextBox dullbox;
@@ -563,12 +609,16 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
-        public System.Windows.Forms.TextBox textBox1;
-        public System.Windows.Forms.TextBox textBox2;
-        public System.Windows.Forms.TextBox textBox3;
-        public System.Windows.Forms.TextBox textBox4;
-        public System.Windows.Forms.TextBox textBox5;
-        public System.Windows.Forms.TextBox textBox6;
+        public System.Windows.Forms.TextBox toxicbox;
+        public System.Windows.Forms.TextBox icebox;
+        public System.Windows.Forms.TextBox blazebox;
+        public System.Windows.Forms.TextBox valoritebox;
+        public System.Windows.Forms.TextBox veritebox;
+        public System.Windows.Forms.TextBox platinumbox;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox electrumbox;
+        private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.TextBox agapitebox;
     }
 }
 
